@@ -1,4 +1,6 @@
-# wb8-exercises
+<H1 align="center">
+wb8-exercises
+</H1>
 
 ## Log4J
 In [`Main.java`](src/main/java/com/pluralsight/Main.java) you will find an example/test for `Logging` with `Log4J`.
