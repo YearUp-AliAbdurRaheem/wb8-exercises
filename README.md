@@ -2,6 +2,10 @@
 wb8-exercises
 </H1>
 
+<p align="center">
+  <img src="src/main/resources/Images/Log4J.png" alt="Logo" width="80"/>
+</p>
+
 ## Log4J
 In [`Main.java`](src/main/java/com/pluralsight/Main.java) you will find an example/test for `Logging` with `Log4J`.
 The [`pom.xml`](pom.xml) file has dependencies for `Log4J`. 
@@ -31,4 +35,6 @@ that makes sure the versions are consistent and that you only have to type the v
 </details>
 
 These are Apache docs on [`Getting Started with Log4J`](https://logging.apache.org/log4j/2.x/manual/getting-started.html).
+
+
 
