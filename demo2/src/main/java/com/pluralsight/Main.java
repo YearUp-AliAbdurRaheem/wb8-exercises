@@ -18,11 +18,10 @@ public class Main {
                 "yearup24");
 // create statement
 // the statement is tied to the open connection
-        Statement statement = connection.createStatement();
-// define your query
-        String query = "SELECT * FROM sakila.city WHERE country_id = 103;";
+        PreparedStatement pStatement = connection.prepareStatement("SELECT * FROM sakila.city WHERE country_id = 103;");
+
 // 2. Execute your query
-        ResultSet results = statement.executeQuery(query);
+        ResultSet results = pStatement.executeQuery();
 // process the results
         while (results.next()) {
             String city = results.getString("city");
