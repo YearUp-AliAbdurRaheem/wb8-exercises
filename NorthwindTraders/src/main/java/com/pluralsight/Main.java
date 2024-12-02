@@ -29,19 +29,39 @@ public class Main {
                     username,
                     password);
 
-            // create statement
-            // the statement is tied to the open connection
-                    Statement statement = connection.createStatement();
+
             // define your query
-                    String query = "SELECT ProductName from Products;";
+                    String ProductIDs_Query = "SELECT ProductID from Products;";
+                    String ProductNames_Query = "SELECT ProductName from Products;";
+                    String UnitPrices_Query = "SELECT UnitPrice from Products;";
+                    String UnitsInStock_Query = "SELECT UnitsInStock from Products;";
+
+            // Define statements
+                    PreparedStatement ProductIDs_Statement = connection.prepareStatement(ProductIDs_Query);
+                    PreparedStatement ProductNames_Statement = connection.prepareStatement(ProductNames_Query);
+                    PreparedStatement UnitPrices_Statement = connection.prepareStatement(UnitPrices_Query);
+                    PreparedStatement UnitsInStock_Statement = connection.prepareStatement(UnitsInStock_Query);
+
+
             // 2. Execute your query
-                    ResultSet results = statement.executeQuery(query);
+                    ResultSet ProductIDs = ProductIDs_Statement.executeQuery();
+                    ResultSet ProductNames = ProductNames_Statement.executeQuery();
+                    ResultSet UnitPrices = UnitPrices_Statement.executeQuery();
+                    ResultSet UnitsInStock = UnitsInStock_Statement.executeQuery();
             // process the results
-                    while (results.next()) {
-                        String Product = results.getString("ProductName");
-                        System.out.println(Product);
-                    }
+
+
             // 3. Close the connection
+                    ProductIDs.close();
+                    ProductNames.close();
+                    UnitPrices.close();
+                    UnitsInStock.close();
+
+                    ProductIDs_Statement.close();
+                    ProductNames_Statement.close();
+                    UnitPrices_Statement.close();
+                    UnitsInStock_Statement.close();
+
                     connection.close();
 
         }
