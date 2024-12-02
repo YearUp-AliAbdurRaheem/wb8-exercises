@@ -32,6 +32,8 @@ public class Main {
             System.out.println(city);
         }
 // 3. Close the connection
+        results.close();
+        pStatement.close();
         connection.close();
 
 
