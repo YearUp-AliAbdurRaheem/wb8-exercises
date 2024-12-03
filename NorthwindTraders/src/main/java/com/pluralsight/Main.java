@@ -7,13 +7,14 @@ public class Main {
         if (args.length != 2) {
             System.out.println(
                 "Application needs two arguments to run: " +
-                "java com.pluralsight.UsingDriverManager <username> <password>");
+                "java com.pluralsight.UsingDriverManager <username> <password> <address>");
             System.exit(1);
         }
 
         // get the username and password from the command line args
         String username = args[0];
         String password = args[1];
+        String sqlServerAddress = args[2];
 
         // load the MySQL Driver
         Class.forName("com.mysql.cj.jdbc.Driver");
@@ -23,7 +24,7 @@ public class Main {
         Connection connection = null;
         try {
             connection = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/northwind",
+                sqlServerAddress,
                 username,
                 password);
 
