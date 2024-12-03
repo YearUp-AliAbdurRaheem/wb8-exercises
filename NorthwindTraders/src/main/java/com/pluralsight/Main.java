@@ -49,6 +49,17 @@ public class Main {
                     ResultSet UnitPrices = UnitPrices_Statement.executeQuery();
                     ResultSet UnitsInStock = UnitsInStock_Statement.executeQuery();
             // process the results
+                System.out.printf("%-20s %-22s %-6s %-6s%n", "Id", "Name", "Price", "Stock");
+                System.out.println("-- --------------------------------------- ------- -----");
+
+                while (ProductIDs.next() && ProductNames.next() && UnitPrices.next() && UnitsInStock.next()) {
+                int id = ProductIDs.getInt("ProductID");
+                String name = ProductNames.getString("ProductName");
+                double price = UnitPrices.getDouble("UnitPrice");
+                int stock = UnitsInStock.getInt("UnitsInStock");
+                
+                System.out.printf("%-2d %-40s %-7.2f %-6d%n", id, name, price, stock);
+}
 
 
             // 3. Close the connection
