@@ -1,6 +1,7 @@
 package com.pluralsight;
 
 import java.sql.*;
+import org.apache.commons.dbcp2.BasicDataSource;
 
 public class Main {
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
@@ -23,9 +24,14 @@ public class Main {
             System.out.println("Cannot load SQL driver");
         }
 
-        // 1. open a connection to the database
-        // use the database URL to point to the correct database
-        try (Connection connection = DriverManager.getConnection(sqlServerAddress, username, password)) {
+        // Create the BasicDataSource
+        BasicDataSource dataSource = new BasicDataSource();
+        dataSource.setUrl(sqlServerAddress);
+        dataSource.setUsername(username);
+        dataSource.setPassword(password);
+
+        // 1. open a connection to the database using DataSource
+        try (Connection connection = dataSource.getConnection()) {
             // define your query
             String ProductIDs_Query = "SELECT ProductID from Products;";
             String ProductNames_Query = "SELECT ProductName from Products;";
