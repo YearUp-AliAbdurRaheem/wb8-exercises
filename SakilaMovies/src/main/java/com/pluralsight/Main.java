@@ -69,6 +69,48 @@ public class Main {
                     }
                 }
             }
+
+            String actor_full_name_input = Console.PromptForString("Enter actor full name to display films: ");
+
+            // define your query
+            String film_query = String.format("""
+                    SELECT 
+                        title AS film_title
+                    FROM sakila.film
+                    INNER JOIN 
+                        sakila.film_actor 
+                                ON 
+                        film.film_id = film_actor.film_id
+                    INNER JOIN 
+                        sakila.actor 
+                                ON 
+                        film_actor.actor_id = actor.actor_id
+                    WHERE 
+                        concat(
+                            first_name
+                            , " "
+                            , last_name
+                        ) = ?;
+                    """, actor_full_name_input); // The "?" is a placeholder for the PreparedStatement to prevent SQL Injection
+
+            // Define statements
+            try (PreparedStatement film_Statement = connection.prepareStatement(film_query);) {
+                film_Statement.setString(1, actor_full_name_input);
+
+                // 2. Execute your query
+                try (ResultSet films = film_Statement.executeQuery();) {
+
+                    // process the results
+                    System.out.printf("%20s\n", "Film Title");
+                    System.out.println("--------------------");
+
+                    while (films.next()) {
+                        String film_title = films.getString("film_title");
+                        
+                        System.out.printf("%20s\n", film_title);
+                    }
+                }
+            }
         }
     }
 }
