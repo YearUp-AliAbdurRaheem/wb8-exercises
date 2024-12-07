@@ -37,4 +37,4 @@ that makes sure the versions are consistent and that you only have to type the v
 These are Apache docs on [`Getting Started with Log4J`](https://logging.apache.org/log4j/2.x/manual/getting-started.html).
 
 
-This project was built with <img src="src/main/resources/Images/Log4J-compact.webp" alt="Logo" width="30"/>
+This project was built with <img src="src/main/resources/Images/Log4J-compact.webp" alt="Log4J Logo" width="30"/>
