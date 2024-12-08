@@ -3,7 +3,7 @@ wb8-exercises
 </H1>
 
 <p align="center">
-  <img src="src/main/resources/Images/Log4J.png" alt="Logo" width="80"/>
+  <img src="src/main/resources/Images/Log4J.png" alt="Log4J Logo" width="80"/>
 </p>
 
 ## Log4J
